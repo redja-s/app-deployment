@@ -2,19 +2,22 @@ name: Terraform Plan + Apply
 on:
   workflow_dispatch:
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   TerraformDeploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@main
-  
+        uses: actions/checkout@v3
+
       - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@main
+        uses: aws-actions/configure-aws-credentials@v2
         with:
           aws-region: eu-west-1
           role-to-assume: ${{ secrets.TERRAFORM_ROLE_ARN }}
-          role-session-name: TF-OIDCSession
   
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
@@ -26,3 +29,6 @@ jobs:
   
       - name: Terraform Plan
         run: terraform plan -no-color
+
+      - name: Terraform Apply
+        run: terraform apply --auto-approve
