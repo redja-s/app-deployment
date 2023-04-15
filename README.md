@@ -1,4 +1,4 @@
-# infra-spring-clinic
+# app deployment
 
 Terraform code to deploy spring clinic app on AWS
 
