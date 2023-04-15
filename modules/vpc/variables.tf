@@ -1,5 +1,4 @@
-# VPC Variables
-
+// VPC Variables
 variable "vpc_name" {
   type        = string
   description = "Name of VPC"
@@ -21,6 +20,10 @@ variable "public_subnet_name" {
 }
 
 variable "internet_gateway_name" {
+  type = string
+}
+
+variable "public_app_sg_name" {
   type = string
 }
 
