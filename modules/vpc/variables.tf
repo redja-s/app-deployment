@@ -23,6 +23,11 @@ variable "internet_gateway_name" {
   type = string
 }
 
+variable "public_rtb_name" {
+  type = string
+  description = "Name of public route table to associate with public subnets"
+}
+
 variable "public_app_sg_name" {
   type = string
 }
@@ -35,6 +40,11 @@ variable "private_cidr_blocks" {
 
 variable "private_subnet_name" {
   type = string
+}
+
+variable "private_rtb_name" {
+  type = string
+  description = "Name of private route table to associate with public subnets"
 }
 
 variable "azs" {
