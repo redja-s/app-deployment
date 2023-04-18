@@ -40,3 +40,10 @@ module "ec2_launch_template" {
   ami_id               = "ami-00aa9d3df94c6c354"
   instance_type        = "t2.micro"
 }
+
+module "s3_buckets" {
+  source = "./modules/s3"
+
+  logging_bucket_name = "logging-bucket"
+  logging_bucket_versioning = true
+}
