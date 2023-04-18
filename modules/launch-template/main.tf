@@ -4,5 +4,9 @@ resource "aws_launch_template" "test_launch_template" {
   image_id               = var.ami_id
   update_default_version = true
 
+   network_interfaces {
+    associate_public_ip_address = true
+  }
+
   user_data = filebase64("${path.module}/user-data/bootstrap.sh")
 }
