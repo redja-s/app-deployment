@@ -1,15 +1,18 @@
 name: Run Tests
 on:
   workflow_run:
-    workflows: ["Terraform Plan + Apply"]
+    workflows: 
+      - "Terraform Plan + Apply"
+    types:
+      - completed
   workflow_dispatch:
-  
+
 permissions:
   id-token: write
   contents: read
 
 jobs:
-  TerraformDeploy:
+  TerraformTest:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
