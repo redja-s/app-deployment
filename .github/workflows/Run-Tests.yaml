@@ -1,0 +1,19 @@
+name: Run Tests
+on:
+  workflow_run:
+    workflows: ["Terraform Plan + Apply"]
+  workflow_dispatch:
+  
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  TerraformDeploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Terraform Apply
+        run: echo "triggered :)"
