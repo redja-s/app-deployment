@@ -1,10 +1,9 @@
 // Public subnets
 resource "aws_route_table" "public_rtb" {
-  vpc_id = aws_vpc.dev_vpc.id
+  vpc_id = aws_vpc.vpc.id
 
   route {
-    cidr_block = "0.0.0.0/0"
-    gateway_id = aws_internet_gateway.public_igw.id
+    for_each   = var.public_rtb_routes
   }
 
   tags = {
@@ -20,7 +19,7 @@ resource "aws_route_table_association" "public_subnet_association" {
 
 // Private subnets
 resource "aws_route_table" "private_rtb" {
-  vpc_id = aws_vpc.dev_vpc.id
+  vpc_id = aws_vpc.vpc.id
 
   tags = {
     Name = var.private_rtb_name
